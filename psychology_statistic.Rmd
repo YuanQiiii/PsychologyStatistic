@@ -1,0 +1,99 @@
+---
+title: "psychology_statistic_reference"
+author: "eric"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Psychology Statistic Reference
+## format
+- 英文名称
+- 中文名称
+- 适用场景
+- 原理
+- 前提条件
+- 代码实现
+- 结果解读
+
+# plot
+# parametric test [参数检验]
+- Parametric statistics assumes data come from a type of probability distribution (i.e., the parametric form of the distribution) and makes inferences about the parameters of the distribution. 
+- Estimation is about estimating the parameters; Hypothesis testing is about deriving the sampling distribution of a test statistic (e.g., t, F).
+> 参数统计假设数据源自某种概率分布类型（即分布的参数形式），并对分布的参数进行推断。
+> 估计是关于估计参数的；假设检验是关于推导出检验统计量（例如 t、F）的抽样分布。
+
+# Non-parametric test [非参数检验]
+- Non-parametric statistics does not rely on data belonging to any particular distribution. 
+- It makes fewer assumptions and is often used when data do not meet the assumptions necessary for parametric tests.
+> 非参数统计不依赖于数据属于任何特定分布。
+> 它做出更少的假设，通常在数据不满足参数检验所需的假设时使用。
+
+When to use non-parametric tests:
+- Non-normality or skewness [非正态或偏态]
+- Outliers [异常值]
+- Small sample sizes (so cannot fully trust normality assumptions) [小样本量（因此无法完全信任正态性假设）]
+- Analyzing nominal or ordinal data (has a ranking but no clear numerical interpretation. E.g., your grades in the final exam, [B - A] = [D - C]?) [分析名义或有序数据（具有排名但没有明确的数值解释。例如，你在期末考试中的成绩，[B - A] = [D - C]？]
+
+disadvantages of non-parametric tests:
+- Less powerful -- probability of rejecting the null hypothesis correctly is lower. [功效较低--拒绝零假设的正确概率较低]
+> A more powerful statistical method is one that is more sensitive and has a lower probability of making a Type II error when a true effect or difference exists.
+> 更强大的统计方法是指更敏感且在真实效应或差异存在时发生 II 类错误的概率较低的方法。
+- Less precise [不够精确]
+
+# Data type
+## nominal data [名义数据]
+## ordinal data [有序数据]
+## interval data [区间数据]
+## ratio data [比率数据]
+
+## ANOVA
+### one-way ANOVA [单因素方差分析]
+### two-way ANOVA [双因素方差分析]
+### repeated-measures ANOVA [重复测量方差分析]
+### mixed-design ANOVA [混合设计方差分析]
+
+## z-test [z 检验] 
+### one-sample z-test [单样本 z 检验]
+### independent z-test [独立 z 检验]
+### paired z-test [配对 z 检验]
+
+## t-test [t 检验]
+### one-sample t-test [单样本 t 检验]
+### independent t-test [独立 t 检验]
+### paired t-test [配对 t 检验]
+
+## correlation [相关]
+### Pearson correlation [皮尔逊相关]
+### Spearman correlation [斯皮尔曼相关]
+
+## regression [回归]
+### linear regression [线性回归]
+### multiple regression [多元回归]
+### logistic regression [逻辑回归]
+
+## chi-square [卡方检验]
+
+### goodness-of-fit test [拟合优度检验]
+### chi-square test of independence [独立性检验]
+### chi-square test of homogeneity [同质性检验]
+
+## kendall's tau [肯德尔 τ]
+## kendall's W [肯德尔 W]
+
+## binomial test [二项检验]
+## K—S test [科尔莫哥洛夫-斯米尔诺夫检验]
+## Runs test [游程检验]
+
+## sign test [符号检验]
+## Wilcoxon signed-rank test [威尔科克森符号秩检验]
+## Stuart-Maxwell test [斯图尔特-麦克斯韦检验]
+
+## Mann-Whitney U test [曼-惠特尼 U 检验]
+## Kolmogorov-Smirnov Z test [科尔莫哥洛夫-斯米尔诺夫 Z 检验]
+
+## Moses Extreme Reactions Test [摩西极端反应检验]
+## Wald-Wolfowitz Runs Test [瓦尔德-沃尔夫维茨游程检验]
