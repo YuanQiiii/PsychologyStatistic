@@ -10,90 +10,378 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Psychology Statistic Reference
+
 ## format
-- 英文名称
-- 中文名称
-- 适用场景
-- 原理
-- 前提条件
-- 代码实现
-- 结果解读
 
-# plot
-# parametric test [参数检验]
-- Parametric statistics assumes data come from a type of probability distribution (i.e., the parametric form of the distribution) and makes inferences about the parameters of the distribution. 
-- Estimation is about estimating the parameters; Hypothesis testing is about deriving the sampling distribution of a test statistic (e.g., t, F).
-> 参数统计假设数据源自某种概率分布类型（即分布的参数形式），并对分布的参数进行推断。
-> 估计是关于估计参数的；假设检验是关于推导出检验统计量（例如 t、F）的抽样分布。
+-   英文名称
+-   中文名称
+-   适用场景
+-   原理
+-   前提条件
+-   代码实现
+-   结果解读
 
-# Non-parametric test [非参数检验]
-- Non-parametric statistics does not rely on data belonging to any particular distribution. 
-- It makes fewer assumptions and is often used when data do not meet the assumptions necessary for parametric tests.
-> 非参数统计不依赖于数据属于任何特定分布。
-> 它做出更少的假设，通常在数据不满足参数检验所需的假设时使用。
+# data type
 
-When to use non-parametric tests:
-- Non-normality or skewness [非正态或偏态]
-- Outliers [异常值]
-- Small sample sizes (so cannot fully trust normality assumptions) [小样本量（因此无法完全信任正态性假设）]
-- Analyzing nominal or ordinal data (has a ranking but no clear numerical interpretation. E.g., your grades in the final exam, [B - A] = [D - C]?) [分析名义或有序数据（具有排名但没有明确的数值解释。例如，你在期末考试中的成绩，[B - A] = [D - C]？]
-
-disadvantages of non-parametric tests:
-- Less powerful -- probability of rejecting the null hypothesis correctly is lower. [功效较低--拒绝零假设的正确概率较低]
-> A more powerful statistical method is one that is more sensitive and has a lower probability of making a Type II error when a true effect or difference exists.
-> 更强大的统计方法是指更敏感且在真实效应或差异存在时发生 II 类错误的概率较低的方法。
-- Less precise [不够精确]
-
-# Data type
 ## nominal data [名义数据]
+
 ## ordinal data [有序数据]
+
 ## interval data [区间数据]
+
 ## ratio data [比率数据]
 
-## ANOVA
-### one-way ANOVA [单因素方差分析]
-### two-way ANOVA [双因素方差分析]
-### repeated-measures ANOVA [重复测量方差分析]
-### mixed-design ANOVA [混合设计方差分析]
+# distribution
 
-## z-test [z 检验] 
-### one-sample z-test [单样本 z 检验]
-### independent z-test [独立 z 检验]
-### paired z-test [配对 z 检验]
-
-## t-test [t 检验]
-### one-sample t-test [单样本 t 检验]
-### independent t-test [独立 t 检验]
-### paired t-test [配对 t 检验]
+# plot
 
 ## correlation [相关]
+
 ### Pearson correlation [皮尔逊相关]
+
 ### Spearman correlation [斯皮尔曼相关]
 
 ## regression [回归]
+
 ### linear regression [线性回归]
+
 ### multiple regression [多元回归]
+
 ### logistic regression [逻辑回归]
+
+# parametric test [参数检验]
+
+-   Parametric statistics assumes data come from a type of probability distribution (i.e., the parametric form of the distribution) and makes inferences about the parameters of the distribution.
+-   Estimation is about estimating the parameters; Hypothesis testing is about deriving the sampling distribution of a test statistic (e.g., t, F). \> 参数统计假设数据源自某种概率分布类型（即分布的参数形式），并对分布的参数进行推断。 \> 估计是关于估计参数的；假设检验是关于推导出检验统计量（例如 t、F）的抽样分布。
+
+## ANOVA
+
+### one-way ANOVA [单因素方差分析]
+
+### two-way ANOVA [双因素方差分析]
+
+### repeated-measures ANOVA [重复测量方差分析]
+
+### mixed-design ANOVA [混合设计方差分析]
+
+## z-test [z 检验]
+
+### one-sample z-test [单样本 z 检验]
+
+### independent z-test [独立 z 检验]
+
+### paired z-test [配对 z 检验]
+
+## t-test [t 检验]
+
+### one-sample t-test [单样本 t 检验]
+
+### independent t-test [独立 t 检验]
+
+### paired t-test [配对 t 检验]
+
+# Non-parametric test [非参数检验]
+
+-   Non-parametric statistics does not rely on data belonging to any particular distribution.
+-   It makes fewer assumptions and is often used when data do not meet the assumptions necessary for parametric tests.
+
+> 非参数统计不依赖于数据属于任何特定分布。 它做出更少的假设，通常在数据不满足参数检验所需的假设时使用。
+
+When to use non-parametric tests:
+
+-   Non-normality or skewness [非正态或偏态]
+-   Outliers [异常值]
+-   Small sample sizes (so cannot fully trust normality assumptions) [小样本量（因此无法完全信任正态性假设）]
+-   Analyzing nominal or ordinal data (has a ranking but no clear numerical interpretation. E.g., your grades in the final exam, [B - A] = [D - C]?)[分析名义或有序数据（具有排名但没有明确的数值解释。例如，你在期末考试中的成绩，[B - A] = [D - C]？]
+
+disadvantages of non-parametric tests:
+
+-   Less powerful -- probability of rejecting the null hypothesis correctly is lower. [功效较低--拒绝零假设的正确概率较低]
+-   Less precise [不够精确]
+
+> A more powerful statistical method is one that is more sensitive and has a lower probability of making a Type II error when a true effect or difference exists.
+
+> 更强大的统计方法是指更敏感且在真实效应或差异存在时发生 II 类错误的概率较低的方法。
 
 ## chi-square [卡方检验]
 
-### goodness-of-fit test [拟合优度检验]
-### chi-square test of independence [独立性检验]
-### chi-square test of homogeneity [同质性检验]
+-   原理:
 
-## kendall's tau [肯德尔 τ]
-## kendall's W [肯德尔 W]
+卡方检验比较观察到的和期望的频率，以评估样本分布是否符合原假设指定的总体分布。
+
+它假设两者之间没有差异，并且不依赖于总体分布的具体形式，因此是一个非参数或模型自由的检验。 $$
+H_0: 观测频次和期望频次相同\\
+f_o = observed \space frequency\\
+f_e = expected \space  frequency\\
+\chi^2=\sum\frac{(f_o-f_e)^2}{f_e}\\
+df = C-1\\
+C是类别的数量，与样本大小无关。 
+$$ 如果观测频数（$f_o$）和期望频数（$f_e$）之间存在很大的差异，那么卡方值将会很大，并且我们将拒绝原假设。
+
+-   假设条件:
+
+1.  **观测值的独立性**：每个个体的观测结果只能归入一个类别。也就是说，一个人的反应不能同时属于多个不同的类别，各个观测之间相互独立，不会相互影响。
+2.  **期望频数的大小**：列联表中每个单元格的期望频数不应小于 5。
+    -   **处理方法**：如果存在某个单元格的期望频数小于 5，就需要将该单元格与其相邻的单元格进行合并。
+
+-   报告方式:
+
+$$
+\chi^2(3)=8.08,p=.044<.05
+$$
+
+### Chi square test for Goodness of Fit [拟合优度检验]
+
+example:
+
+选择一门课程的主要原因是什么?
+
+| 选择一门课程的主要原因 | Interest | Easy to pass | Good teaching | Good course schedule | Total |
+|------------|------------|------------|------------|------------|------------|
+| 实际的人数 | 18 | 17 | 7 | 8 | 50 |
+| 期望的人数 | 12.5 | 12.5 | 12.5 | 12.5 | 50 |
+
+```{r}
+# H_0: 4种原因存在同样的影响
+rm(list = ls())
+f_e <- c(rep(12.5,times=4))
+f_o = c(18, 17, 7, 8)
+chisq.test(f_o)  # 不给出p的时候默认是均匀分布的
+chisq.test(f_o, p = rep(1/length(f_o),length(f_o))) #参数p为目标概率分布
+```
+
+### Chi square test for independence [独立性检验]
+
+-   适用条件:用于检验两个变量之间是否存在关联。
+
+-   以矩阵形式呈现数据。
+
+-   矩阵每个单元格中的数据是**频数**，而非等距 / 比率变量。
+
+-   这是一个关于变量相关性 / 独立性的检验；我们需要一个类似于相关系数的指标，即克莱默（Cramer）的 φ 系数作为效应量来报告。
+
+$$ 
+    f_e(i,j) = \frac{\sum{f_o(*,j)}\sum{f_o(i,*)}}{N}\\ 
+    N = total\space samples\\
+    \chi^2=\sum_{i,j}\frac{(f_o(i,j)-f_e(i,j))^2}{f_e(i,j)}\\
+    df = (r-1)(c-1)\\
+    效应量 \\
+    Cramer's \space \phi\\
+    V=\Phi=\sqrt{\frac{\chi^2}{N\times df_{min}}}\\
+    df_{min} = min\{r-1,c-1\}
+    $$
+
+![](images/clipboard-3751562434.png)
+
+example:
+
+育儿方式是否取决于父母的政治倾向?
+
+|                          |                    |                         |       |
+|-------------------|------------------|------------------|------------------|
+| Practices                | Liberals(expected) | Conservatives(expected) | Total |
+| Permissive(expected)     | 15(12.5)           | 10(12.5)                | 25    |
+| Non-permissive(expected) | 5(7.5)             | 10(7.5)                 | 15    |
+| Total                    | 20                 | 20                      | 40    |
+
+```{r}
+# 当两个变量之间不存在一致且可预测的关系时，这两个变量相互独立。
+# 当两个变量相互独立时，其中一个变量（育儿方式）的频数分布在另一个变量（政治倾向）的所有类别中都将具有相同的形态（相同的比例）。
+
+#H_0: 政治立场不会影响父母的教养方式
+rm(list = ls())
+contingency_table = data.frame(c(15,10),c(5,10))
+chisq.test(contingency_table, correct = F)
+
+#计算cramer's v
+#install.packages("rcompanion")
+
+library(rcompanion)
+contingency_matrix <- data.matrix(contingency_table)
+cramerV(contingency_matrix) #参数必须转换成矩阵
+```
 
 ## binomial test [二项检验]
-## K—S test [科尔莫哥洛夫-斯米尔诺夫检验]
+
+-   检验数据是否来自二项分布。
+
+-   $H_0:p_{real}=p_{expected}(双尾检验)$
+
+```{r}
+binomial_data = rep(c(1,2,3),100)
+count_list = table(binomial_data) # 统计数据中每个不同取值的出现次数。
+print(count_list)
+binom.test(x = count_list[[1]],
+           n = count_list[[1]]+count_list[[2]]++count_list[[3]],
+           p = 1/3, 
+	alternative='two.sided')
+# x 表示成功的次数。
+# n 表示试验的总次数。
+# p 是原假设下二项分布的成功概率。
+# alternative 参数指定备择假设的类型。'two.sided' 表示双侧检验，即备择假设是成功的概率不等于 p。
+```
+
 ## Runs test [游程检验]
 
+-   适用于二项分布数据
+
+-   如果是随机过程，那么更有可能出现较短的连串（连续出现 1 或 0 ）。理想的连串情况更有可能意味着数据来自随机过程。
+
+-   Run[游程]代表一个转换，比如从0到1或从1到0。
+
+-   如果数据是连续型的（而非二项分布数据），我们可以通过中位数来划分数据以进行转换。（即确定一个分类标准将数据转化为二项分布数据）
+
+-   $H_0:游程是随机的$
+
+使用场景:
+
+-   检验样本分组是否随机
+
+-   检验判断是否完全随机
+
+```{r}
+library(DescTools)
+rm(list = ls())
+runs_data = rep(c(1,0),1000)
+
+RunsTest(runs_data,
+	alternative = "two.sided",
+	exact=TRUE)
+```
+
+## K—S test [科尔莫哥洛夫-斯米尔诺夫检验]
+
+适用场景:
+
+-   检验样本分布与检验分布（任何分布）是否不同
+
+-   针对正态分布、均匀分布、指数分布或泊松分布。
+
+原理:
+
+-   它与卡方检验（Chi-square test）类似,它通过以下方式比较两个累积分布函数(CDF)：
+
+    -   $D=\sup_x|S(x)-F_0(x)|,其中sup代表上限或者上确界$
+
+    -   D表示这两个累积分布函数（CDF）之间的最大差异。
+
+    -   $H_0:数据分布与目标分布一致$
+
+### one-sample K-S test [单样本 K-S 检验]
+
+```{r}
+rm(list = ls())
+ks_data = 1:100
+
+norm0 = rnorm(length(ks_data),mean(ks_data),sd(ks_data))
+poisson0 = rpois(length(ks_data),lambda = 1/mean(ks_data))
+
+ks.test(ks_data, norm0)
+ks.test(ks_data, poisson0)
+```
+
+### two-sample K-S test [双样本 K-S 检验]
+
+## kendall's tau [肯德尔 τ]
+
+适用场景:
+
+-   衡量两个有序变量(ordianl variables)之间的相关性的指标。
+
+> example1:你在物理课上的排名与你在数学课上的排名会存在相关性吗？
+>
+> example2:一家公司某一年的营收与另一年的营收之间是否相关呢？在这种情况下，营收数据属于有序数据（它们在商业领域中的排名情况，见下文） 。
+
+原理:
+
+$$
+\tau = \frac{一致的对数 - 不一致的对数}{n(n-1)/2}
+$$
+
+-   一致对：当x_1 \> x_2且y_1 \> y_2时，或者当x_1 \< x_2且y_1 \< y_2时，这样的配对为一致对。
+
+-   不一致对则与之相反：当x_1 \> x_2但y_1 \< y_2时，或者当x_1 \< x_2但y_1 \> y_2时，这样的配对为不一致对。
+
+-   共要计算$C_n^2$对关系
+
+-   Kendall's tau（肯德尔等级相关系数）的取值范围是$[-1, 1]$。
+
+    -   **取值为1**：表示两个变量之间存在完全正相关，即当一个变量的等级增加时，另一个变量的等级也严格按照相同顺序增加，所有的数据对都是一致对。
+    -   **取值为-1**：表示两个变量之间存在完全负相关，即当一个变量的等级增加时，另一个变量的等级严格按照相反顺序变化，所有的数据对都是不一致对。
+    -   **取值为0**：表示两个变量之间不存在等级相关关系，一致对和不一致对的数量大致相等，变量之间没有明显的单调关系。
+    -   **取值在(-1,0)或(0,1)之间**：表示变量之间存在一定程度的相关关系，取值越接近$1$或$-1$，相关程度越强；取值越接近$0$，相关程度越弱。
+
+-   $H_0:两组数据不存在相关关系(Z=0)$
+
+```{r}
+rm(list = ls())
+data1 = 1:50
+data2 = 50:1
+cor.test(data1, 
+	data2, 
+	alternative = "two.sided", 
+	method = "kendall")
+```
+
+## kendall's W [肯德尔 W]
+
+适用范围:
+
+-   衡量不同评分员之间一致性
+
+> example: 可以通过智商（IQ）和情商（EQ）来评估优秀程度。那么智商和情商的排名会相关吗 ？
+
+原理:
+
+-   是点二列相关的扩展：适用于超过两组的情况。
+
+-   仅处理排名数据；不要求数据呈正态分布。
+
+$$
+W = \frac{\sum{R_i^2}-\frac{(\sum{R_i})^2}{N}}{\frac{1}{12}K^2(N^3-N)}=\frac{S}{S_{max}}\\
+K是评分者数目\\
+N是被评分者数目\\R_i是被评分者排名之和\\
+$$
+
+-   你也可以将肯德尔和谐系数W转换为斯皮尔曼相关系数。
+
+-   斯皮尔曼相关系数用于衡量两个变量之间的相关性，而肯德尔W系数则用于衡量多个变量（这里指多个评分员）之间的“平均”相关性。
+
+    -   $r_{spearman}=\frac{KW-1}{K-1}$
+
+-   肯德尔和谐系数$W$的取值范围是$[0, 1]$，具体如下：
+
+    -   **取值为**$0$：表示评分员之间完全不一致，即被评对象在不同评分员眼中的排序完全随机，没有任何一致性。例如，对于一组学生的成绩排名，不同评分员给出的排名完全不同，没有任何规律可循，此时肯德尔和谐系数$W$为$0$。
+    -   **取值为**$1$：表示评分员之间完全一致，即所有评分员对被评对象的排序完全相同。比如，所有评分员对一组参赛选手的表现给出了完全一样的排名，这时肯德尔和谐系数$W$为$1$。
+    -   **取值在**$(0,1)$之间：表示评分员之间存在一定程度的一致性，取值越接近$1$，说明评分员之间的一致性越高；取值越接近$0$，说明评分员之间的一致性越低。
+
+```{r}
+rm(list=ls())
+data = as.table(matrix(rep(1:5,5),nrow = 5))
+t(data)
+
+
+library(irr)
+# 注意矩阵的样式,行为不同rater,列为不同candidate
+kendall(t(data))
+```
+
+> 肯德尔W系数显示出较高的值，表明评分员之间意见一致。
+>
+> 与此同时，卡方检验结果显著，表明对啤酒的评分存在差异。
+>
+> 这两种检验反映了不同的意义。
+
 ## sign test [符号检验]
+
 ## Wilcoxon signed-rank test [威尔科克森符号秩检验]
+
 ## Stuart-Maxwell test [斯图尔特-麦克斯韦检验]
 
 ## Mann-Whitney U test [曼-惠特尼 U 检验]
+
 ## Kolmogorov-Smirnov Z test [科尔莫哥洛夫-斯米尔诺夫 Z 检验]
 
 ## Moses Extreme Reactions Test [摩西极端反应检验]
+
 ## Wald-Wolfowitz Runs Test [瓦尔德-沃尔夫维茨游程检验]
