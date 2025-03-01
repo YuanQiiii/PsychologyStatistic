@@ -144,7 +144,7 @@ example:
 ```{r}
 # H_0: 4种原因存在同样的影响
 rm(list = ls())
-f_e <- c(rep(12.5,times=4))
+f_e <- c(rep(12.5, times = 4))
 f_o = c(18, 17, 7, 8)
 chisq.test(f_o)  # 不给出p的时候默认是均匀分布的
 chisq.test(f_o, p = rep(1/length(f_o),length(f_o))) #参数p为目标概率分布
