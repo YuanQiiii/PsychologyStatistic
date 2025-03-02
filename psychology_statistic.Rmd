@@ -137,7 +137,7 @@ example:
 选择一门课程的主要原因是什么?
 
 | 选择一门课程的主要原因 | Interest | Easy to pass | Good teaching | Good course schedule | Total |
-|------------|------------|------------|------------|------------|------------|
+|----|----|----|----|----|----|
 | 实际的人数 | 18 | 17 | 7 | 8 | 50 |
 | 期望的人数 | 12.5 | 12.5 | 12.5 | 12.5 | 50 |
 
@@ -145,9 +145,9 @@ example:
 # H_0: 4种原因存在同样的影响
 rm(list = ls())
 f_e <- c(rep(12.5, times = 4))
-f_o = c(18, 17, 7, 8)
-chisq.test(f_o)  # 不给出p的时候默认是均匀分布的
-chisq.test(f_o, p = rep(1/length(f_o),length(f_o))) #参数p为目标概率分布
+f_o <- c(18, 17, 7, 8)
+chisq.test(f_o) # 不给出p的时候默认是均匀分布的
+chisq.test(f_o, p = rep(1 / length(f_o), length(f_o))) # 参数p为目标概率分布
 ```
 
 ### Chi square test for independence [独立性检验]
@@ -178,7 +178,7 @@ example:
 育儿方式是否取决于父母的政治倾向?
 
 |                          |                    |                         |       |
-|-------------------|------------------|------------------|------------------|
+|--------------------------|--------------------|-------------------------|-------|
 | Practices                | Liberals(expected) | Conservatives(expected) | Total |
 | Permissive(expected)     | 15(12.5)           | 10(12.5)                | 25    |
 | Non-permissive(expected) | 5(7.5)             | 10(7.5)                 | 15    |
@@ -188,17 +188,17 @@ example:
 # 当两个变量之间不存在一致且可预测的关系时，这两个变量相互独立。
 # 当两个变量相互独立时，其中一个变量（育儿方式）的频数分布在另一个变量（政治倾向）的所有类别中都将具有相同的形态（相同的比例）。
 
-#H_0: 政治立场不会影响父母的教养方式
+# H_0: 政治立场不会影响父母的教养方式
 rm(list = ls())
-contingency_table = data.frame(c(15,10),c(5,10))
+contingency_table <- data.frame(c(15, 10), c(5, 10))
 chisq.test(contingency_table, correct = F)
 
-#计算cramer's v
-#install.packages("rcompanion")
+# 计算cramer's v
+# install.packages("rcompanion")
 
 library(rcompanion)
 contingency_matrix <- data.matrix(contingency_table)
-cramerV(contingency_matrix) #参数必须转换成矩阵
+cramerV(contingency_matrix) # 参数必须转换成矩阵
 ```
 
 ## binomial test [二项检验]
@@ -208,13 +208,16 @@ cramerV(contingency_matrix) #参数必须转换成矩阵
 -   $H_0:p_{real}=p_{expected}(双尾检验)$
 
 ```{r}
-binomial_data = rep(c(1,2,3),100)
-count_list = table(binomial_data) # 统计数据中每个不同取值的出现次数。
+rm(list = ls())
+binomial_data <- rep(c(1, 2, 3), 100)
+count_list <- table(binomial_data) # 统计数据中每个不同取值的出现次数。
 print(count_list)
-binom.test(x = count_list[[1]],
-           n = count_list[[1]]+count_list[[2]]++count_list[[3]],
-           p = 1/3, 
-	alternative='two.sided')
+binom.test(
+    x = count_list[[1]],
+    n = count_list[[1]] + count_list[[2]] + +count_list[[3]],
+    p = 1 / 3,
+    alternative = "two.sided"
+)
 # x 表示成功的次数。
 # n 表示试验的总次数。
 # p 是原假设下二项分布的成功概率。
@@ -242,11 +245,12 @@ binom.test(x = count_list[[1]],
 ```{r}
 library(DescTools)
 rm(list = ls())
-runs_data = rep(c(1,0),1000)
+runs_data <- rep(c(1, 0), 1000)
 
 RunsTest(runs_data,
-	alternative = "two.sided",
-	exact=TRUE)
+    alternative = "two.sided",
+    exact = TRUE
+)
 ```
 
 ## K—S test [科尔莫哥洛夫-斯米尔诺夫检验]
@@ -271,10 +275,10 @@ RunsTest(runs_data,
 
 ```{r}
 rm(list = ls())
-ks_data = 1:100
+ks_data <- 1:100
 
-norm0 = rnorm(length(ks_data),mean(ks_data),sd(ks_data))
-poisson0 = rpois(length(ks_data),lambda = 1/mean(ks_data))
+norm0 <- rnorm(length(ks_data), mean(ks_data), sd(ks_data))
+poisson0 <- rpois(length(ks_data), lambda = 1 / mean(ks_data))
 
 ks.test(ks_data, norm0)
 ks.test(ks_data, poisson0)
@@ -298,9 +302,9 @@ $$
 \tau = \frac{一致的对数 - 不一致的对数}{n(n-1)/2}
 $$
 
--   一致对：当x_1 \> x_2且y_1 \> y_2时，或者当x_1 \< x_2且y_1 \< y_2时，这样的配对为一致对。
+-   一致对：当$x_1 > x_2$且$y_1 > y_2$时，或者当$x_1 < x_2$且$y_1 < y_2$时，这样的配对为一致对。
 
--   不一致对则与之相反：当x_1 \> x_2但y_1 \< y_2时，或者当x_1 \< x_2但y_1 \> y_2时，这样的配对为不一致对。
+-   不一致对则与之相反：当$x_1 > x_2$但$y_1 < y_2$时，或者当$x_1 < x_2$但$y_1 > y_2$时，这样的配对为不一致对。
 
 -   共要计算$C_n^2$对关系
 
@@ -315,12 +319,13 @@ $$
 
 ```{r}
 rm(list = ls())
-data1 = 1:50
-data2 = 50:1
-cor.test(data1, 
-	data2, 
-	alternative = "two.sided", 
-	method = "kendall")
+data1 <- 1:50
+data2 <- 50:1
+cor.test(data1,
+    data2,
+    alternative = "two.sided",
+    method = "kendall"
+)
 ```
 
 ## kendall's W [肯德尔 W]
@@ -356,8 +361,8 @@ $$
     -   **取值在**$(0,1)$之间：表示评分员之间存在一定程度的一致性，取值越接近$1$，说明评分员之间的一致性越高；取值越接近$0$，说明评分员之间的一致性越低。
 
 ```{r}
-rm(list=ls())
-data = as.table(matrix(rep(1:5,5),nrow = 5))
+rm(list = ls())
+data <- as.table(matrix(rep(1:5, 5), nrow = 5))
 t(data)
 
 
@@ -374,14 +379,332 @@ kendall(t(data))
 
 ## sign test [符号检验]
 
+适用场景:
+
+-   与配对 t 检验类似的情况：重复测量、纵向研究、前测与后测对比等等。
+
+-   当我们不关心差异的绝对大小时，（这种方法）也可用于不满足参数统计假设的等距数据或等比数据。将数据转换为二项变量，然后我们就可以使用二项分布。
+
+原理:
+
+-   计算正数的数目和负数的的数目,取较小的数
+
+    -   $r = min\{N_{positive},N_{negative} \}$
+
+-   r值越小，两组之间存在显著差异的可能性就越大。
+
+    -   如果样本量较小（n \< 25），在二项分布的分布表中查找临界值$r_{df,\alpha}$
+
+    -   如果样本量较大（n \> 25），可以使用$正态分布N(np,npq)的临界值Z_{\alpha}$
+
+-   $H_0:两组数据之间没有显著差异$
+
+![](images/clipboard-1106247970.png)
+
 ## Wilcoxon signed-rank test [威尔科克森符号秩检验]
+
+适用范围:
+
+-   配对样本t检验的非参数版本
+
+-   比符号检验更加敏感和详细,把差异也考虑到统计中
+
+-   可以用于不满足参数统计的等距数据和等比数据
+
+原理:
+
+$$
+T = min\{\sum{R_+},\sum{R_-}\}\\
+差异按绝对值排序,从小到大\\
+R_+是正的差异的秩次和\\
+R-是负的差异的秩次和\\
+$$
+
+-   如果 T 足够小，那么其中一组更有可能比另一组小或者大。极端情况是 T = 0。对T查表可得显著性结果
+-   如果样本量较大（n \> 25），T统计量将服从正态分布。因此，我们需要进行Z检验：
+    -   $N(\frac{n(n-1)}{4},\sqrt{\frac{n(n+1)(2n+1)}{24})}$
+-   当有的差异绝对值相同(可能为0)时,有两种处理的办法
+    -   去除这一对数据,df也减小
+    -   保留这一对数据,rank平分到两侧,df也减小 (一般使用这种方法)
+    -   为0的时候有两种方法,不为0的时候只有第二种方法
+-   example:
+
+![](images/clipboard-3465144754.png)
+
+![](images/clipboard-2665714599.png)
+
+```{r}
+rm(list = ls())
+x <- 1:10
+y <- 0:9
+
+wilcox.test(x, y,
+    alternative = "two.sided",
+    paired = T,
+    exact = F,
+    correct = F
+)
+
+binom.test(sum(x > y),
+    n = length(x),
+    alternative = "two.sided"
+)
+
+# 数据不是分类数据，因此不能使用卡方检验或类似的针对分类数据的方法。
+# 相反，使用Wilcoxon符号秩检验（Wilcoxon signed rank test）和二项检验（binomial test）更为合适。
+# 这两种方法适用于连续型数据，尤其是在数据不服从正态分布的情况下，效果更好。
+# wilcox.test 是用来检验两个相关样本（x 和 y）之间的差异是否显著，适合非正态分布的连续数据。
+# binom.test 用来检验 x 大于 y 的次数是否与预期的概率相符，适用于事件次数的比较。
+# 如果为0.5,则代表随机出现,即没有实际的效果,需要显著的不同于0.5才可以.
+```
+
+## McNemar test [麦克尼马尔检验]
+
+适用条件:
+
+-   二分或二元数据（例如，是否为病毒携带者）量化的两个相关样本进行检验。
+-   用于评估 2×2 列联表中的边际同质性。
+
+原理:
+
+-   它检验的是从表格边际总和得出的比例之间的差异：$p_A = (a + b)/N$ 以及 $p_B = (a + c)/N$。
+-   $H_0:治疗没有效果$
+    -   a + b = a + c 或者 b + d = c + d 或者 b = c
+
+$$
+\chi^2=\frac{(b-c)^2}{b+c}\\
+df = 1\\
+$$
+
+例子:
+
+一位研究人员试图确定一种药物对某种特定疾病是否有疗效。
+
+![](images/clipboard-2895959224.png)
+
+```{r}
+rm(list = ls())
+drug_effect <- matrix(c(101, 59, 121, 33),
+    nrow = 2,
+    dimnames = list(
+        "before" = c("+", "-"),
+        "after" = c("+", "-")
+    )
+)
+drug_effect
+mcnemar.test(drug_effect)
+```
 
 ## Stuart-Maxwell test [斯图尔特-麦克斯韦检验]
 
+适用场景:
+
+-   配对样本：数据来自同一组样本的不同测量（例如，在两个时间点或两个条件下的分类数据）。
+
+-   名义数据：变量是分类的，没有内在的顺序性（例如，性别、颜色、疾病类型等）。
+
+-   多类别的情况：当每个分类变量有多个类别时,同时检验两个评价者在所有类别(N\*N)之间的边际同质性。
+
+原理:
+
+-   $H_0:治疗没有效果$
+
+-   检验的统计量 $\chi^2$ 基本上与卡方检验的统计量类似，但它针对配对数据进行了调整。
+
+$$
+\chi^2 = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$
+
+其中： - \$ O\_{ij} \$ 是配对样本在第 $i$ 类别和第 $j$ 类别的观测频数， - \$ E\_{ij} \$ 是根据原假设计算的预期频数。
+
+例子:
+
+![](images/clipboard-800835820.png)
+
+```{r}
+rm(list = ls())
+library(DescTools)
+ClassEva <- as.table(matrix(c(20, 3, 0, 10, 30, 5, 5, 15, 40), nrow = 3, dimnames = list("before" = c("good", "medium", "bad"), "after" = c("good", "medium", "bad"))))
+ClassEva
+
+StuartMaxwellTest(ClassEva)
+```
+
 ## Mann-Whitney U test [曼-惠特尼 U 检验]
+
+适用场景：
+
+-   作为独立t检验的非参数版本时使用。
+
+-   数据为顺序量表形式时使用。
+
+-   对于不满足参数统计假设的区间数据或比率数据也可使用。
+
+原理:
+
+1.  合并样本并排序： 将两个独立样本中的所有数据合并到一起，并根据这些数据的大小从小到大排序。每个数据点会被赋予一个秩（rank），即第一个最小的数赋秩1，第二小的数赋秩2，依此类推。如果有相同的数值，使用**平均秩**赋给这些相同值。
+
+2.  计算每组样本的秩和： 对于每个样本组，计算该组所有数据的秩之和。假设有两个独立样本组 A 和 B ，则：
+
+    -   样本组 A 的秩和为 $R_A$ ；
+    -   样本组 B 的秩和为 $R_B$。
+
+3.  计算U统计量： Mann-Whitney U检验的统计量 U 计算公式如下：
+
+$$
+   U_A = R_A - \frac{n_A(n_A + 1)}{2}\\
+   U_B = R_B - \frac{n_B(n_B + 1)}{2}\\
+$$ 其中：
+
+-   $R_A$ 和 $R_B$ 分别是样本组 $A$ 和 $B$ 的秩和，
+
+-   $n_A$ 和 $n_B$ 分别是样本组 $A$ 和 $B$ 的样本大小。
+
+统计量 $U$ 的值可以由 $U_A$ 或$U_B$中的较小者来表示。
+
+4.  计算p值： 根据样本大小 $n_A$ 和 $n_B$，可以通过查找Mann-Whitney U分布表或使用正态近似方法来计算p值。对于大样本，Mann-Whitney U检验的统计量近似服从正态分布，因此可以使用Z分数计算p值：
+
+    $Z = \frac{U - \mu_U}{\sigma_U}$
+
+    其中，$\mu_U$ 和 $\sigma_U$ 分别是U统计量的期望值和标准差，计算公式如下：
+
+    $\mu_U = \frac{n_A n_B}{2}$
+
+    $\sigma_U = \sqrt{\frac{n_A n_B (n_A + n_B + 1)}{12}}$
+
+    然后根据计算出的Z值查标准正态分布表来得出p值，决定是否拒绝原假设。
+
+简单理解就是按顺序排完数据之后按照下面的表的方式给两个样本赋点数,求和之后取较小的那一个作为统计量,点数取决前面有多说和他不是来自同一组的数据
+
+例子:
+
+![](images/clipboard-3062807202.png)
+
+```{r}
+rm(list = ls())
+two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
+                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
+                               )
+two_samples_data
+
+names(two_samples_data) # 查看列名
+
+library(dplyr)
+
+group1 = two_samples_data %>%
+  filter(name == "A") %>%
+  select(grade) %>%
+  pull()
+
+group2 = two_samples_data %>%
+  filter(name == "B") %>%
+  select(grade) %>%
+  pull()
+
+
+wilcox.test(x = group1, y = group2, alternative = "two.sided", 
+            paired = F)
+# 使用与威尔科克森检验相同的功能，但将数据指定为独立样本数据(paired = F)。
+
+```
 
 ## Kolmogorov-Smirnov Z test [科尔莫哥洛夫-斯米尔诺夫 Z 检验]
 
+适用场景:
+
+-   与单样本柯尔莫戈洛夫 - 斯米尔诺夫（K - S）检验类似；
+
+-   将两个分布（累积分布函数，CDFs）相互进行比较。适用于检测位置差异。
+
+    -   适用于双独立样本
+    -   实质是比较累计概率分布函数的最大差别
+
+```{r}
+rm(list = ls())
+two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
+                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
+                               )
+two_samples_data
+
+names(two_samples_data) # 查看列名
+
+library(dplyr)
+
+group1 = two_samples_data %>%
+  filter(name == "A") %>%
+  select(grade) %>%
+  pull()
+
+group2 = two_samples_data %>%
+  filter(name == "B") %>%
+  select(grade) %>%
+  pull()
+
+ks.test(group1, group2, 
+	alternative = "two.sided")
+```
+
 ## Moses Extreme Reactions Test [摩西极端反应检验]
 
+-   当两组数据混合并排序后（剔除上下各 5%的数据），检查其中一组数据秩次的跨度。
+-   适用于两端有较多数据集中的分布情况。
+-   实质还是比较两个样本的range+1 (去掉极端值以后）。
+
+```{r}
+rm(list = ls())
+two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
+                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
+                               )
+two_samples_data
+
+names(two_samples_data) # 查看列名
+
+library(dplyr)
+
+group1 = two_samples_data %>%
+  filter(name == "A") %>%
+  select(grade) %>%
+  pull()
+
+group2 = two_samples_data %>%
+  filter(name == "B") %>%
+  select(grade) %>%
+  pull()
+
+
+install.packages("DescTools")
+library(DescTools)
+MosesTest(group1, group2, NULL) 
+```
+
 ## Wald-Wolfowitz Runs Test [瓦尔德-沃尔夫维茨游程检验]
+
+-   将两组数据放在一起进行排序；如果两组数据相似，那么组标签应该是混合排列的。
+-   适用于方差差异比位置差异更显著的分布情况。
+-   会生成一组组标签序列，统计在该序列中某一组标签交替出现的次数。游程的数量服从 Z 分布。
+
+```{r}
+two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
+                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
+                               )
+two_samples_data
+
+names(two_samples_data) # 查看列名
+
+library(dplyr)
+
+group1 = two_samples_data %>%
+  filter(name == "A") %>%
+  select(grade) %>%
+  pull()
+
+group2 = two_samples_data %>%
+  filter(name == "B") %>%
+  select(grade) %>%
+  pull()
+
+RunsTest(x = group1, 
+	y = group2,
+	alternative="two.sided", 
+	exact=T)
+```
