@@ -2,7 +2,15 @@
 title: "psychology_statistic_reference"
 author: "eric"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+    # theme: cayman # 1
+    # theme: tactile #2
+    # theme: architect #3
+    # theme: leonids #4
+    theme: hpstr #5
+    highlight: github
+    # highlight: vignette
 ---
 
 ```{r setup, include=FALSE}
@@ -34,6 +42,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # distribution
 
 # plot
+
+```         
+```
 
 ## correlation [相关]
 
@@ -191,7 +202,7 @@ example:
 # H_0: 政治立场不会影响父母的教养方式
 rm(list = ls())
 contingency_table <- data.frame(c(15, 10), c(5, 10))
-chisq.test(contingency_table, correct = F)
+chisq.test(contingency_table, correct = FALSE)
 
 # 计算cramer's v
 # install.packages("rcompanion")
@@ -582,30 +593,32 @@ $$ 其中：
 
 ```{r}
 rm(list = ls())
-two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
-                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
-                               )
+two_samples_data <- data.frame(
+    name = c(rep("A", 3), rep("B", 4), rep("A", 2), rep("B", 1), rep("A", 1), rep("B", 2)),
+    grade = c(4, 6, 9, 10, 12, 17, 22, 28, 40, 62, 90, 95, 97)
+)
 two_samples_data
 
 names(two_samples_data) # 查看列名
 
 library(dplyr)
 
-group1 = two_samples_data %>%
-  filter(name == "A") %>%
-  select(grade) %>%
-  pull()
+group1 <- two_samples_data %>%
+    filter(name == "A") %>%
+    select(grade) %>%
+    pull()
 
-group2 = two_samples_data %>%
-  filter(name == "B") %>%
-  select(grade) %>%
-  pull()
+group2 <- two_samples_data %>%
+    filter(name == "B") %>%
+    select(grade) %>%
+    pull()
 
 
-wilcox.test(x = group1, y = group2, alternative = "two.sided", 
-            paired = F)
+wilcox.test(
+    x = group1, y = group2, alternative = "two.sided",
+    paired = F
+)
 # 使用与威尔科克森检验相同的功能，但将数据指定为独立样本数据(paired = F)。
-
 ```
 
 ## Kolmogorov-Smirnov Z test [科尔莫哥洛夫-斯米尔诺夫 Z 检验]
@@ -621,60 +634,63 @@ wilcox.test(x = group1, y = group2, alternative = "two.sided",
 
 ```{r}
 rm(list = ls())
-two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
-                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
-                               )
+two_samples_data <- data.frame(
+    name = c(rep("A", 3), rep("B", 4), rep("A", 2), rep("B", 1), rep("A", 1), rep("B", 2)),
+    grade = c(4, 6, 9, 10, 12, 17, 22, 28, 40, 62, 90, 95, 97)
+)
 two_samples_data
 
 names(two_samples_data) # 查看列名
 
 library(dplyr)
 
-group1 = two_samples_data %>%
-  filter(name == "A") %>%
-  select(grade) %>%
-  pull()
+group1 <- two_samples_data %>%
+    filter(name == "A") %>%
+    select(grade) %>%
+    pull()
 
-group2 = two_samples_data %>%
-  filter(name == "B") %>%
-  select(grade) %>%
-  pull()
+group2 <- two_samples_data %>%
+    filter(name == "B") %>%
+    select(grade) %>%
+    pull()
 
-ks.test(group1, group2, 
-	alternative = "two.sided")
+ks.test(group1, group2,
+    alternative = "two.sided"
+)
 ```
 
 ## Moses Extreme Reactions Test [摩西极端反应检验]
 
 -   当两组数据混合并排序后（剔除上下各 5%的数据），检查其中一组数据秩次的跨度。
 -   适用于两端有较多数据集中的分布情况。
--   实质还是比较两个样本的range+1 (去掉极端值以后）。
+-   实质还是比较两个样本的range+1 (去掉极端值以后)。
 
 ```{r}
 rm(list = ls())
-two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
-                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
-                               )
+two_samples_data <- data.frame(
+    name = c(rep("A", 3), rep("B", 4), rep("A", 2), rep("B", 1), rep("A", 1), rep("B", 2)),
+    grade = c(4, 6, 9, 10, 12, 17, 22, 28, 40, 62, 90, 95, 97)
+)
 two_samples_data
 
 names(two_samples_data) # 查看列名
 
 library(dplyr)
 
-group1 = two_samples_data %>%
-  filter(name == "A") %>%
-  select(grade) %>%
-  pull()
+group1 <- two_samples_data %>%
+    filter(name == "A") %>%
+    select(grade) %>%
+    pull()
 
-group2 = two_samples_data %>%
-  filter(name == "B") %>%
-  select(grade) %>%
-  pull()
+group2 <- two_samples_data %>%
+    filter(name == "B") %>%
+    select(grade) %>%
+    pull()
 
 
 install.packages("DescTools")
 library(DescTools)
-MosesTest(group1, group2, NULL) 
+MosesTest(group1, group2, NULL)
 ```
 
 ## Wald-Wolfowitz Runs Test [瓦尔德-沃尔夫维茨游程检验]
@@ -684,27 +700,90 @@ MosesTest(group1, group2, NULL)
 -   会生成一组组标签序列，统计在该序列中某一组标签交替出现的次数。游程的数量服从 Z 分布。
 
 ```{r}
-two_samples_data <- data.frame(name = c(rep("A",3),rep("B",4),rep("A",2),rep("B",1),rep("A",1),rep("B",2))
-                               ,grade = c(4,6,9,10,12,17,22,28,40,62,90,95,97)
-                               )
+two_samples_data <- data.frame(
+    name = c(rep("A", 3), rep("B", 4), rep("A", 2), rep("B", 1), rep("A", 1), rep("B", 2)),
+    grade = c(4, 6, 9, 10, 12, 17, 22, 28, 40, 62, 90, 95, 97)
+)
 two_samples_data
 
 names(two_samples_data) # 查看列名
 
 library(dplyr)
 
-group1 = two_samples_data %>%
-  filter(name == "A") %>%
-  select(grade) %>%
-  pull()
+group1 <- two_samples_data %>%
+    filter(name == "A") %>%
+    select(grade) %>%
+    pull()
 
-group2 = two_samples_data %>%
-  filter(name == "B") %>%
-  select(grade) %>%
-  pull()
+group2 <- two_samples_data %>%
+    filter(name == "B") %>%
+    select(grade) %>%
+    pull()
 
-RunsTest(x = group1, 
-	y = group2,
-	alternative="two.sided", 
-	exact=T)
+RunsTest(
+    x = group1,
+    y = group2,
+    alternative = "two.sided",
+    exact = T
+)
 ```
+
+### Friedman Test [弗里德曼检验]
+
+适用场景:
+
+-   重复测量数据的比较：当数据是重复测量的，即同一组受试者在不同时间点或不同条件下的测量结果，Friedman Test也适用。
+
+-   适用于非正态分布的数据。
+
+-   适用于小样本数据的分析。
+
+原理：
+
+1.  Friedman Test通过将原始数据转换为排名（rank），然后利用这些排名来评估不同组之间的差异是否具有统计学意义。
+2.  对于每组（block,或者是一个评分者对于不同被评分者的评分）数据，按照从小到大的顺序进行排序，并赋予相应的秩次。如果有多个观测值相同(tied value)，则平分秩次。
+3.  计算每个被评分者的排名总和。
+4.  利用每个被评分者的排名总和，构建Friedman检验的统计量，该统计量反映了组间差异的程度。
+5.  通过比较检验统计量与理论分布（通常是卡方分布）的临界值，确定是否存在统计学上的显著差异。
+
+$H_0： \text{所有相关样本的中位数相等}$
+
+$H_a： \text{至少有一个相关样本的中位数不等}$
+
+$\chi^2(k-1) = \frac{12}{nk(k+1)}\sum{R^2-3n(k-1)}$
+
+-   n is \# of raters (aka, b, the block); 评分者数目，在例子中为每行
+
+-   k is \# of subject; 被评分者数目，在例子中为列
+
+-   R is the total rank of a subject.
+
+> 例子：
+>
+> 6个考官, 3个应聘者. 问题是3个应聘者是否得分不同.
+>
+> ![](images/clipboard-565727591.png)
+
+### Cochran's Q test [科克兰Q检验]
+
+### kruskal-wallis test [克鲁斯卡尔-沃利斯检验]
+
+Kruskal-Wallis 检验基于 $H$ 用于比较 $k$ 个总体分布 - **原假设 (H₀)**：$H_0$：$k$ 个总体分布是相同的。 - **备择假设 (Hₐ)**：$H_a$：至少有两个总体分布在位置上存在差异。
+
+检验统计量 检验统计量 $H$ 的计算公式为：
+
+$H = \frac{12}{n(n + 1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(n + 1)$
+
+其中：
+
+-   $n_i$ = 第 $i$ 个总体样本的观测值数量，
+
+-   $R_i$ = 第 $i$ 个样本的秩和（即每个观测值在其相对大小的整体 $n = n_1 + n_2 + \cdots + n_k$ 个观测值中的排名之和）。
+
+拒绝域 如果检验统计量 $H$ 大于自由度为 $k - 1$ 的卡方分布的临界值 $\chi_{\alpha}^2$，则拒绝原假设 $H_0$。
+
+假设条件
+
+-   $k$ 个样本是随机且独立抽取的。
+
+-   每个样本中有五个或更多的观测值。
